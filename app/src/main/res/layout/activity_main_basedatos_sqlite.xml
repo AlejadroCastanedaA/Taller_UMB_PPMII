@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main_basedatos_sqlite"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.alejandro.otromas.Main_basedatos_sqlite">
+
+    <TextView
+        android:text="@string/texto_informativo_entrada_nombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/entrada_bd_nombre" />
+
+    <TextView
+        android:text="@string/texto_informativo_entrada_telefono"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/entrada_bd_telefono" />
+
+    <TextView
+        android:text="@string/texto_informativo_entrada_documento"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView3" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/entrada_bd_documento" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"  />
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <Button
+            android:text="@string/texto_boton_guardar_bd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/boton_guardar_bd"
+            android:layout_weight="1" />
+
+        <Button
+            android:text="@string/texto_boton_consultar_bd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/boton_consultar_bd"
+            android:layout_weight="1" />
+
+    </RadioGroup>
+
+</LinearLayout>

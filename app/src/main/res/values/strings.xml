@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Talleres</string>
+    <string name="texto_nombre_universidad">Univeridad Manuela Beltrán</string>
+    <string name="nombre_docente">Yamil Buenaño</string>
+    <string name="texto_semestre_curso">Septimo Semestre</string>
+    <string name="texto_anio_actual">Dosmil Diesiceis</string>
+    <string name="nombre_alejo">Sergio Alejandro Castañeda Astaiza</string>
+    <string name="carrera_alejo">Ingenieria de Sotware</string>
+    <string name="materia_alejo">Programacion en Plataformas Moviles</string>
+    <string name="texto_boton_hacer_toast">Lanzar</string>
+    <string name="texto_bt_ir_act1">Actividad 1</string>
+    <string name="texto_bt_ir_act2">Actividad 2</string>
+    <string name="texto_boton_ir_ac3">actividad 3</string>
+    <string name="texto_toast">texto puesto en toast</string>
+    <string name="texto_informativo_entrada_nombre">Nombre</string>
+    <string name="texto_informativo_entrada_telefono">Telefono</string>
+    <string name="texto_informativo_entrada_documento">Documento</string>
+    <string name="texto_boton_guardar_bd">guardar</string>
+    <string name="texto_boton_consultar_bd">consultar</string>
+    <string name="texto_boton_guardar_bd_2">guardar</string>
+    <string name="texto_boton_consultar_bd_2">consultar</string>
+    <string name="descripcio_splashimg">imagen_splash</string>
+    <string name="texto_boton_ir_sqliete">ir a Formulario</string>
+    <string name="texto_boton_ir_consultaweb">ir a Consulta</string>
+    <string name="texto_boton_buscar_pagina">Buscar</string>
+
+</resources>
