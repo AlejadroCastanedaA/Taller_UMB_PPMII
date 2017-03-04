@@ -25,7 +25,7 @@ public class AyudaBaseDatos extends SQLiteOpenHelper {
     //para crear la base mediante un string
 
     private final static String CREA_LA_BASE = "CREATE TABLE IF NOT EXISTS "+ NOMBRE_DE_LA_TABLA +"("
-            //+_ID+" INTEGER PRIMARY KEY AUTOINCREMENT, "
+            +_ID+" INTEGER PRIMARY KEY AUTOINCREMENT, "
             +COLUMNA_DOCUMENTO+" INTEGER, "
             +COLUMNA_NOMBRE+" TEXT, "
             +COLUMNA_TELEFONO+" INTEGER"

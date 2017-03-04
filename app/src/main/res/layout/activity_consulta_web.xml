@@ -10,7 +10,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/entrada_direccion_web"
-        android:inputType="textWebEditText"
+        android:inputType="textUri"
+        android:text="@string/texto_cabecera_busqueda_http"
         />
     <Button
         android:layout_width="match_parent"

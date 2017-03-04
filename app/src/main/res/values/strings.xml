@@ -23,5 +23,6 @@
     <string name="texto_boton_ir_sqliete">ir a Formulario</string>
     <string name="texto_boton_ir_consultaweb">ir a Consulta</string>
     <string name="texto_boton_buscar_pagina">Buscar</string>
+    <string name="texto_cabecera_busqueda_http">http://</string>
 
 </resources>

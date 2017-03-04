@@ -10,12 +10,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class Main_basedatos_sqlite extends AppCompatActivity implements View.OnClickListener{
 
     Button boton_guardar, boton_consultar;
     EditText entrada_nombre, entrada_documento, entrada_telefono;
+    TextView salida_bd_consulta;
 
 
     @Override
@@ -27,6 +29,7 @@ public class Main_basedatos_sqlite extends AppCompatActivity implements View.OnC
         entrada_documento = (EditText) findViewById(R.id.entrada_bd_documento);
         entrada_nombre = (EditText) findViewById(R.id.entrada_bd_nombre);
         entrada_telefono = (EditText) findViewById(R.id.entrada_bd_telefono);
+        salida_bd_consulta = (TextView) findViewById(R.id.pantalla_salida_consulta_bd);
         boton_guardar.setOnClickListener(this);
         boton_consultar.setOnClickListener(this);
     }
@@ -63,7 +66,7 @@ public class Main_basedatos_sqlite extends AppCompatActivity implements View.OnC
     public void consultarbd (View view){
 
         AyudaBaseDatos admin = new AyudaBaseDatos(this);
-        SQLiteDatabase bd= admin.getReadableDatabase();
+        SQLiteDatabase bd_Alejandro= admin.getReadableDatabase();
         String doc = entrada_documento.getText().toString();
         String Nom = entrada_nombre.getText().toString();
         String tel = entrada_telefono.getText().toString();
@@ -71,20 +74,23 @@ public class Main_basedatos_sqlite extends AppCompatActivity implements View.OnC
         entrada_nombre.setText("");
         entrada_telefono.setText("");
 
-        Cursor fila = bd.rawQuery( "SELECT nombre, Documento FROM tabladatostitulo WHERE telefono=" + tel, null);
+        Cursor fila = bd_Alejandro.rawQuery( "SELECT nombre, documento FROM tabladatostitulo WHERE telefono=" + tel, null);
 
 
         if (fila.moveToFirst()) {
             entrada_nombre.setText(fila.getString(0));
-            //entrada_documento.setText(fila.getString(2));
+            entrada_documento.setText(fila.getString(1));
+            salida_bd_consulta.setText("Nombre: " + fila.getString(0)+ "Documento: " +fila.getString(1));
 
-        } else
+
+
+        } else{
             entrada_documento.setText("");
             entrada_nombre.setText("");
             entrada_telefono.setText("");
             Toast.makeText(this, "No existe un telefono asociado", Toast.LENGTH_SHORT).show();
-        bd.close();
-
+        }
+        bd_Alejandro.close();
     }
 
     public void onClick (View view){
@@ -92,8 +98,7 @@ public class Main_basedatos_sqlite extends AppCompatActivity implements View.OnC
         switch (view.getId()){
             case R.id.boton_guardar_bd:
                 guardar(view);
-                Toast.makeText(this, "hace boton", Toast.LENGTH_SHORT).show();
-
+                //Toast.makeText(this, "hace boton", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.boton_consultar_bd:
                 consultarbd(view);
