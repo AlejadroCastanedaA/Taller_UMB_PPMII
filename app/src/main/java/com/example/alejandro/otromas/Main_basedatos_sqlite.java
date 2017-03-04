@@ -78,12 +78,9 @@ public class Main_basedatos_sqlite extends AppCompatActivity implements View.OnC
 
 
         if (fila.moveToFirst()) {
-            entrada_nombre.setText(fila.getString(0));
-            entrada_documento.setText(fila.getString(1));
+            //entrada_nombre.setText(fila.getString(0));
+            //entrada_documento.setText(fila.getString(1));
             salida_bd_consulta.setText("Nombre: " + fila.getString(0)+ "Documento: " +fila.getString(1));
-
-
-
         } else{
             entrada_documento.setText("");
             entrada_nombre.setText("");
