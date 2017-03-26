@@ -62,6 +62,7 @@ public class SensoresTemp extends AppCompatActivity implements SensorEventListen
                     x = masData[0];
                     sensorx.setText("Temperatura: " + x );
                     break;
+                //aslss
             }
         }
     }
