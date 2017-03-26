@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.alejandro.otromas">
 
-
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -47,6 +46,13 @@
             </intent-filter>
         </activity>
         <activity android:name=".ConsultaWeb">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.ALTERNATIVE" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".SensoresTemp">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

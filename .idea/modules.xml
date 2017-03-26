@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/OtroMas.iml" filepath="$PROJECT_DIR$/OtroMas.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Taller_UMB_PPMII.iml" filepath="$PROJECT_DIR$/Taller_UMB_PPMII.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

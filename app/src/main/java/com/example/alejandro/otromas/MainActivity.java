@@ -8,7 +8,7 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-    Button boton, boton_act_2;
+    Button boton, boton_act_2, boton_act_3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +18,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         boton_act_2 = (Button)findViewById(R.id.boton_ir_act2);
         boton.setOnClickListener(this);
         boton_act_2.setOnClickListener(this);
+        boton_act_3 = (Button) findViewById(R.id.boton_ir_act_3);
+        boton_act_3.setOnClickListener(this);
     }
 
     @Override
@@ -31,6 +33,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             case R.id.boton_ir_act2:
                 intent = new Intent(MainActivity.this, ContenidoTaller2.class);
+                startActivity(intent);
+                break;
+
+            case R.id.boton_ir_act_3:
+                intent = new Intent(MainActivity.this, SensoresTemp.class);
                 startActivity(intent);
                 break;
         }

@@ -24,5 +24,8 @@
     <string name="texto_boton_ir_consultaweb">ir a Consulta</string>
     <string name="texto_boton_buscar_pagina">Buscar</string>
     <string name="texto_cabecera_busqueda_http">http://</string>
+    <string name="text_sensorx">Sensor x</string>
+    <string name="text_sensory">Sensor y</string>
+    <string name="text_sensorz">Sensor z</string>
 
 </resources>
