@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.alejandro.otromas.BaseExternaAct3">
+
+    <TextView
+        android:id="@+id/textView_id_tabla"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/id_label" />
+
+    <EditText
+        android:id="@+id/entrada_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/textView_actividad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/campo_texto_actividad"/>
+
+    <EditText
+        android:id="@+id/entrada_actividad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/textView_asunto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/campo_texto_asunto" />
+
+    <EditText
+        android:id="@+id/entrada_asunto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/textView_fecha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/campo_texto_fecha" />
+
+    <EditText
+        android:id="@+id/entrada_fecha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/boton_consultar_bd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/boton_consultar" />
+
+        <Button
+            android:id="@+id/boton_guardar_bd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/boton_guardar" />
+
+        <Button
+            android:id="@+id/boton_salir_actividad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/boton_salir" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/salida_agenda_BD"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

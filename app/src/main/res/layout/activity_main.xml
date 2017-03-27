@@ -18,15 +18,28 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/boton_ir_act2"
-
         android:text="@string/texto_bt_ir_act2"
         android:layout_gravity="center" />
 
     <Button
-        android:text="@string/texto_boton_ir_ac3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/boton_ir_act_3"
+        android:id="@+id/boton_ir_act3"
+        android:text="@string/texto_btn_ir_ac3"
+        android:layout_gravity="center" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/boton_ir_act_5"
+        android:text="@string/texto_bt_ir_act5"
+        android:layout_gravity="center" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/boton_ir_act6"
+        android:text="@string/texto_bt_ir_act6"
         android:layout_gravity="center" />
 
 </LinearLayout>
