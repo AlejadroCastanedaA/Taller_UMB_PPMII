@@ -143,9 +143,6 @@ public class BaseExternaAct3 extends AppCompatActivity implements View.OnClickLi
                 Toast.makeText(this,"sin funcion",Toast.LENGTH_SHORT).show();
                 break;
         }
-
     }
-
-
 }
 
