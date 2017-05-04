@@ -93,6 +93,7 @@
     <TextView
         android:id="@+id/salida_agenda_BD"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:inputType="textMultiLine"/>
 
 </LinearLayout>

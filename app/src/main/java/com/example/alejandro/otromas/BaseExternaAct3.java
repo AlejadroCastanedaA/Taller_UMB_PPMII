@@ -1,5 +1,6 @@
 package com.example.alejandro.otromas;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -20,6 +21,8 @@ import java.io.Reader;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+
+import javax.net.ssl.HttpsURLConnection;
 
 public class BaseExternaAct3 extends AppCompatActivity implements View.OnClickListener{
 
@@ -43,6 +46,7 @@ public class BaseExternaAct3 extends AppCompatActivity implements View.OnClickLi
         boton_consultar.setOnClickListener(this);
         boton_guardar.setOnClickListener(this);
         boton_salir.setOnClickListener(this);
+
     }
 
     private class guardar_datos extends AsyncTask<String, Void, String> {
@@ -50,7 +54,7 @@ public class BaseExternaAct3 extends AppCompatActivity implements View.OnClickLi
         @Override
         protected String doInBackground(String... urls){
             try {
-                return downloadURL(urls[0]);
+                return downloadURL(urls[0]); /*downloadUrl*/
             } catch (IOException e) {
                 return "imposible ingresar a la pagina. URL debe estar invalida.";
             }
@@ -64,6 +68,10 @@ public class BaseExternaAct3 extends AppCompatActivity implements View.OnClickLi
             }catch (JSONException e){
                 e.printStackTrace();
             }
+            entrada_id.setText("");
+            entrada_actividad.setText("");
+            entrada_asunto.setText("");
+            entrada_fecha.setText("");
             Toast.makeText(getApplicationContext(),"se guardaron los datos", Toast.LENGTH_SHORT).show();
         }
     }
@@ -71,7 +79,6 @@ public class BaseExternaAct3 extends AppCompatActivity implements View.OnClickLi
     private class consulta_datos extends AsyncTask<String, Void, String>{
         @Override
         protected String doInBackground(String... urls){
-
             try {
                 return downloadURL(urls[0]);
             } catch (IOException e) {
@@ -81,15 +88,27 @@ public class BaseExternaAct3 extends AppCompatActivity implements View.OnClickLi
         @Override
         protected void onPostExecute (String result){
             JSONArray arregloja = null;
+
             try{
                 arregloja = new JSONArray(result);
-                entrada_fecha.setText(arregloja.getString(1));
-                salida_agenda.setText("Fecha: "+arregloja.getString(1)+" Asunto: "+arregloja.getString(2)+" Actividad: "+arregloja.getString(3));
+                //entrada_fecha.setText(arregloja.getString(1));
+                entrada_asunto.setText(arregloja.getString(2));
+                //entrada_actividad.setText(arregloja.getString(3));
+                //salida_agenda.setText("Fecha: "+arregloja.getString(1)+" Asunto: "+arregloja.getString(2)+" Actividad: "+arregloja.getString(3));
             }catch (JSONException e){
                 e.printStackTrace();
             }
+            //entrada_actividad.setText("no funciona");
+            //salida_agenda.setText("no canciona");
+
+            entrada_id.setText("");
+            entrada_actividad.setText("");
+            entrada_asunto.setText("");
+            entrada_fecha.setText("");
+
         }
     }
+
 
 
     private String downloadURL(String myurl) throws IOException {
@@ -118,8 +137,61 @@ public class BaseExternaAct3 extends AppCompatActivity implements View.OnClickLi
                 is.close();
             }
         }
-
     }
+
+
+
+    /**
+     * Given a URL, sets up a connection and gets the HTTP response body from the server.
+     * If the network request is successful, it returns the response body in String form. Otherwise,
+     * it will throw an IOException.
+     */
+    /*
+    private String downloadUrl(URL url) throws IOException {
+        InputStream stream = null;
+        HttpsURLConnection connection = null;
+        String result = null;
+        try {
+            connection = (HttpsURLConnection) url.openConnection();
+            // Timeout for reading InputStream arbitrarily set to 3000ms.
+            connection.setReadTimeout(3000);
+            // Timeout for connection.connect() arbitrarily set to 3000ms.
+            connection.setConnectTimeout(3000);
+            // For this use case, set HTTP method to GET.
+            connection.setRequestMethod("GET");
+            // Already true by default but setting just in case; needs to be true since this request
+            // is carrying an input (response) body.
+            connection.setDoInput(true);
+            // Open communications link (network traffic occurs here).
+            connection.connect();
+            publishProgress(DownloadCallback.Progress.CONNECT_SUCCESS);
+            int responseCode = connection.getResponseCode();
+            if (responseCode != HttpsURLConnection.HTTP_OK) {
+                throw new IOException("HTTP error code: " + responseCode);
+            }
+            // Retrieve the response body as an InputStream.
+            stream = connection.getInputStream();
+            publishProgress(DownloadCallback.Progress.GET_INPUT_STREAM_SUCCESS, 0);
+            if (stream != null) {
+                // Converts Stream to String with max length of 500.
+                result = readStream(stream, 500);
+            }
+        } finally {
+            // Close Stream and disconnect HTTPS connection.
+            if (stream != null) {
+                stream.close();
+            }
+            if (connection != null) {
+                connection.disconnect();
+            }
+        }
+        return result;
+    }
+    */
+
+
+    /*fin*/
+
 
     public String readIt(InputStream stream, int len) throws  IOException, UnsupportedEncodingException {
         Reader reader = null;
@@ -134,13 +206,15 @@ public class BaseExternaAct3 extends AppCompatActivity implements View.OnClickLi
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.boton_consultar_bd:
-                new consulta_datos().execute("http://localhost/registro.php?Fecha=\"+entrada_fecha.getText().toString()+\"&Asunto=\"+entrada_asunto.getText().toString()+\"&Actividad=\"+entrada_actividad.getText().toString()");
+                //new consulta_datos().execute("http://localhost/consultaverdos.php?id_agenda=\"+entrada_id.getText().toString()");
+                new consulta_datos().execute("http://10.0.2.2/xampp/htdocs/consultaverdos.php?id_agenda="+entrada_id.getText().toString());
                 break;
             case R.id.boton_guardar_bd:
-                new guardar_datos().execute("http://localhost/registro.php?Fecha=\"+entrada_fecha.getText().toString()+\"&Asunto=\"+entrada_asunto.getText().toString()+\"&Actividad=\"+entrada_actividad.getText().toString()");
+                new guardar_datos().execute("http://localhost/registrodos.php?fecha="+entrada_fecha.getText().toString()+"&asunto="+entrada_asunto.getText().toString()+"&actividad="+entrada_actividad.getText().toString());
                 break;
             case R.id.boton_salir_actividad:
-                Toast.makeText(this,"sin funcion",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(BaseExternaAct3.this,MainActivity.class);
+                startActivity(intent);
                 break;
         }
     }
