@@ -88,6 +88,7 @@ public class Main_basedatos_sqlite extends AppCompatActivity implements View.OnC
             Toast.makeText(this, "No existe un telefono asociado", Toast.LENGTH_SHORT).show();
         }
         bd_Alejandro.close();
+
     }
 
     public void onClick (View view){
@@ -102,4 +103,6 @@ public class Main_basedatos_sqlite extends AppCompatActivity implements View.OnC
                 break;
         }
     }
+
+
 }

@@ -61,13 +61,15 @@ public class BaseExternaAct3 extends AppCompatActivity implements View.OnClickLi
         }
         @Override
         protected void onPostExecute (String result){
+            /*
             JSONArray arregloja = null;
             try{
                 arregloja = new JSONArray(result);
-                salida_agenda.setText("Fecha: "+arregloja.getString(1)+" Asunto: "+arregloja.getString(2)+" Actividad: "+arregloja.getString(3));
+                //salida_agenda.setText("Fecha: "+arregloja.getString(1)+" Asunto: "+arregloja.getString(2)+" Actividad: "+arregloja.getString(3));
             }catch (JSONException e){
                 e.printStackTrace();
             }
+            */
             entrada_id.setText("");
             entrada_actividad.setText("");
             entrada_asunto.setText("");
@@ -88,23 +90,19 @@ public class BaseExternaAct3 extends AppCompatActivity implements View.OnClickLi
         @Override
         protected void onPostExecute (String result){
             JSONArray arregloja = null;
-
             try{
                 arregloja = new JSONArray(result);
-                //entrada_fecha.setText(arregloja.getString(1));
+                entrada_fecha.setText(arregloja.getString(1));
                 entrada_asunto.setText(arregloja.getString(2));
-                //entrada_actividad.setText(arregloja.getString(3));
-                //salida_agenda.setText("Fecha: "+arregloja.getString(1)+" Asunto: "+arregloja.getString(2)+" Actividad: "+arregloja.getString(3));
+                entrada_actividad.setText(arregloja.getString(3));
+                salida_agenda.setText("Fecha: "+arregloja.getString(1)+" Asunto: "+arregloja.getString(2)+" Actividad: "+arregloja.getString(3));
             }catch (JSONException e){
                 e.printStackTrace();
             }
-            //entrada_actividad.setText("no funciona");
-            //salida_agenda.setText("no canciona");
-
-            entrada_id.setText("");
-            entrada_actividad.setText("");
-            entrada_asunto.setText("");
-            entrada_fecha.setText("");
+            //entrada_id.setText("");
+            //entrada_actividad.setText("");
+            //entrada_asunto.setText("");
+            //entrada_fecha.setText("");
 
         }
     }
@@ -139,7 +137,36 @@ public class BaseExternaAct3 extends AppCompatActivity implements View.OnClickLi
         }
     }
 
+    public String readIt(InputStream stream, int len) throws  IOException, UnsupportedEncodingException {
+        Reader reader = null;
+        reader = new InputStreamReader(stream, "UTF-8");
+        char[] buffer = new char[len];
+        reader.read(buffer);
+        return new String(buffer);
+    }
 
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.boton_consultar_bd:
+                //new consulta_datos().execute("http://localhost/consultaverdos.php?id_agenda=\"+entrada_id.getText().toString()");
+                //new consulta_datos().execute("http://10.0.2.2/xampp/htdocs/consultaverdos.php?id_agenda="+entrada_id.getText().toString());
+                new consulta_datos().execute("http://10.0.2.2/consulta_nueva.php?id_agenda="+entrada_id.getText().toString());
+                break;
+            case R.id.boton_guardar_bd:
+                new guardar_datos().execute("http://10.0.2.2/registro_nuevo.php?fecha="+entrada_fecha.getText().toString()+"&asunto="+entrada_asunto.getText().toString()+"&actividad="+entrada_actividad.getText().toString());
+                break;
+            case R.id.boton_salir_actividad:
+                //Intent intent = new Intent(BaseExternaAct3.this,MainActivity.class);
+                //startActivity(intent);
+                entrada_id.setText("");
+                entrada_actividad.setText("");
+                entrada_asunto.setText("");
+                entrada_fecha.setText("");
+                break;
+        }
+    }
 
     /**
      * Given a URL, sets up a connection and gets the HTTP response body from the server.
@@ -192,31 +219,5 @@ public class BaseExternaAct3 extends AppCompatActivity implements View.OnClickLi
 
     /*fin*/
 
-
-    public String readIt(InputStream stream, int len) throws  IOException, UnsupportedEncodingException {
-        Reader reader = null;
-        reader = new InputStreamReader(stream, "UTF-8");
-        char[] buffer = new char[len];
-        reader.read(buffer);
-        return new String(buffer);
-    }
-
-
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()){
-            case R.id.boton_consultar_bd:
-                //new consulta_datos().execute("http://localhost/consultaverdos.php?id_agenda=\"+entrada_id.getText().toString()");
-                new consulta_datos().execute("http://10.0.2.2/xampp/htdocs/consultaverdos.php?id_agenda="+entrada_id.getText().toString());
-                break;
-            case R.id.boton_guardar_bd:
-                new guardar_datos().execute("http://localhost/registrodos.php?fecha="+entrada_fecha.getText().toString()+"&asunto="+entrada_asunto.getText().toString()+"&actividad="+entrada_actividad.getText().toString());
-                break;
-            case R.id.boton_salir_actividad:
-                Intent intent = new Intent(BaseExternaAct3.this,MainActivity.class);
-                startActivity(intent);
-                break;
-        }
-    }
 }
 
