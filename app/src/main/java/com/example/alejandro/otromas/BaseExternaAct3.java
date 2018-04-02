@@ -61,19 +61,20 @@ public class BaseExternaAct3 extends AppCompatActivity implements View.OnClickLi
         }
         @Override
         protected void onPostExecute (String result){
-            /*
+
             JSONArray arregloja = null;
             try{
                 arregloja = new JSONArray(result);
-                //salida_agenda.setText("Fecha: "+arregloja.getString(1)+" Asunto: "+arregloja.getString(2)+" Actividad: "+arregloja.getString(3));
+                salida_agenda.setText("Fecha: "+arregloja.getString(1)+" Asunto: "+arregloja.getString(2)+" Actividad: "+arregloja.getString(3));
             }catch (JSONException e){
                 e.printStackTrace();
             }
-            */
+
             entrada_id.setText("");
             entrada_actividad.setText("");
             entrada_asunto.setText("");
             entrada_fecha.setText("");
+
             Toast.makeText(getApplicationContext(),"se guardaron los datos", Toast.LENGTH_SHORT).show();
         }
     }
@@ -92,22 +93,20 @@ public class BaseExternaAct3 extends AppCompatActivity implements View.OnClickLi
             JSONArray arregloja = null;
             try{
                 arregloja = new JSONArray(result);
-                entrada_fecha.setText(arregloja.getString(1));
-                entrada_asunto.setText(arregloja.getString(2));
-                entrada_actividad.setText(arregloja.getString(3));
-                salida_agenda.setText("Fecha: "+arregloja.getString(1)+" Asunto: "+arregloja.getString(2)+" Actividad: "+arregloja.getString(3));
+                //entrada_fecha.setText(arregloja.getString(1));
+                //entrada_asunto.setText(arregloja.getString(2));
+                //entrada_actividad.setText(arregloja.getString(3));
+                salida_agenda.setText("Fecha: "+arregloja.getString(1)+"\nAsunto: "+arregloja.getString(2)+"\nActividad: "+arregloja.getString(3));
             }catch (JSONException e){
                 e.printStackTrace();
             }
-            //entrada_id.setText("");
-            //entrada_actividad.setText("");
-            //entrada_asunto.setText("");
-            //entrada_fecha.setText("");
+            entrada_id.setText("");
+            entrada_actividad.setText("");
+            entrada_asunto.setText("");
+            entrada_fecha.setText("");
 
         }
     }
-
-
 
     private String downloadURL(String myurl) throws IOException {
         Log.i("URL","" + myurl);
@@ -148,6 +147,8 @@ public class BaseExternaAct3 extends AppCompatActivity implements View.OnClickLi
 
     @Override
     public void onClick(View view) {
+        String dtfecha, dtactividad, dtasunto;
+
         switch (view.getId()){
             case R.id.boton_consultar_bd:
                 //new consulta_datos().execute("http://localhost/consultaverdos.php?id_agenda=\"+entrada_id.getText().toString()");
@@ -155,7 +156,12 @@ public class BaseExternaAct3 extends AppCompatActivity implements View.OnClickLi
                 new consulta_datos().execute("http://10.0.2.2/consulta_nueva.php?id_agenda="+entrada_id.getText().toString());
                 break;
             case R.id.boton_guardar_bd:
-                new guardar_datos().execute("http://10.0.2.2/registro_nuevo.php?fecha="+entrada_fecha.getText().toString()+"&asunto="+entrada_asunto.getText().toString()+"&actividad="+entrada_actividad.getText().toString());
+                dtfecha= entrada_fecha.getText().toString();
+                dtasunto=entrada_asunto.getText().toString();
+                dtactividad=entrada_actividad.getText().toString();
+                new guardar_datos().execute("http://10.0.2.2/registro_nueva.php?fecha="+dtfecha+"&asunto="+dtasunto+"&actividad="+dtactividad);
+                //new guardar_datos().execute("http://10.0.2.2/registro_nueva.php?fecha="+entrada_fecha.getText().toString()+"&asunto="+entrada_asunto.getText().toString()+"&actividad="+entrada_actividad.getText().toString());
+                salida_agenda.setText(dtasunto+"-"+dtfecha+"-"+dtactividad);
                 break;
             case R.id.boton_salir_actividad:
                 //Intent intent = new Intent(BaseExternaAct3.this,MainActivity.class);
@@ -164,6 +170,7 @@ public class BaseExternaAct3 extends AppCompatActivity implements View.OnClickLi
                 entrada_actividad.setText("");
                 entrada_asunto.setText("");
                 entrada_fecha.setText("");
+                salida_agenda.setText("");
                 break;
         }
     }

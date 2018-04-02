@@ -37,6 +37,6 @@
     <string name="campo_texto_actividad">Actividad</string>
     <string name="boton_guardar">Guardar</string>
     <string name="boton_consultar">Consultar</string>
-    <string name="boton_salir">Salir de la actividad</string>
+    <string name="boton_borrar_pantalla">Borrar</string>
 
 </resources>

@@ -24,4 +24,13 @@
         android:id="@+id/textview_sensorz"
         android:text="@string/text_sensorz"/>
 
+    <Button
+        android:id="@+id/boton_prueba_sensor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        />
+
+
+
 </LinearLayout>
